@@ -224,6 +224,7 @@
   left: 80px;
   position: absolute;
   top: 90px;
+  list-style-type: none;
 }
 
 .btnMaior {

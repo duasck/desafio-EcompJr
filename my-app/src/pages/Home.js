@@ -8,14 +8,12 @@ import { useState } from 'react';
 import { BtnMenu } from '../components/BtnMenu';
 import { BtnVoltar } from '../components/BtnVoltar';
 
+
 function Home() {
   const [isMenuOpen, setIsSideMenuOpen] = useState(false);
-
   const handleMenuClick = () => {
-    console.log('Clicou no menu');
     setIsSideMenuOpen(!isMenuOpen);
   };
-
   return (
     <div>
       {isMenuOpen && <SideMenu button={<BtnVoltar handleMenuClick={handleMenuClick} />} />}

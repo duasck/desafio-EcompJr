@@ -271,3 +271,58 @@
     padding: 3% 7%;
   }
 }
+
+.form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  gap: 32px;
+}
+
+.form input{
+  background-color: #292a31;
+  border-radius: 8px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+  padding: 16px;
+}
+
+.form button{
+  background-color: #292a31;
+  border-radius: 8px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  padding: 10px 30px;
+  &:hover{
+    scale: 1.1;
+    cursor: pointer;
+  }
+}
+
+.input_details{
+  min-height: 80px;
+}
+
+.form label{
+  background-color:#292a31;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: 3px solid;
+  padding: 15px 75px;
+  border-radius: 10px;
+}

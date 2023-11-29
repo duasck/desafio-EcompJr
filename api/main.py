@@ -1,17 +1,13 @@
 import json
-from typing import Union
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.security import OAuth2PasswordBearer
-from fastapi import Depends, HTTPException, Form
-import utils
+from fastapi.middleware.cors import CORSMiddleware
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/login")
 app = FastAPI()
-origins = [
-    "http://localhost",
-    "http://localhost:3000",  # Adicione o URL do seu front-end
-]
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+origins = ["http://localhost", "http://localhost:3000"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,49 +17,106 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Load users data from JSON file
+with open('data/users.json') as f:
+    users_db = json.load(f)
+
+# Load forms data from JSON file
+with open('data/forms.json') as e:
+    forms_db = json.load(e)
+
+user_id_counter = len(users_db)
+form_id_counter = len(forms_db)
+
+
+# Routes for users
+@app.post("/users")
+async def create_user(user):
+    global user_id_counter
+    user_id_counter += 1
+
+    new_user = {
+        "id": user_id_counter,
+        "username": user["username"],
+        "password": user["password"]
+    }
+
+    users_db.append(new_user)
+
+    # Save updated users data to JSON file
+    with open('users.json', 'w') as f:
+        json.dump(users_db, f)
+
+    return HTTPException(status_code=201, detail="User created")
+
+
+@app.get("/users/{user_id}")
+async def get_user(user_id: int):
+    user = next((user for user in users_db if user["id"] == user_id), None)
+
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    return user
+
+
+@app.get("/users")
+async def get_all_users():
+    return users_db
+
+
+# Routes for forms
+@app.post("/forms")
+async def create_form(form):
+    global form_id_counter
+    form_id_counter += 1
+
+    new_form = {
+        "id": form_id_counter,
+        "name": form["name"],
+        "description": form["description"]
+    }
+
+    forms_db.append(new_form)
+
+    # Save updated forms data to JSON file
+    with open('forms.json', 'w') as f:
+        json.dump(forms_db, f)
+
+    return HTTPException(status_code=201, detail="Form created")
+
+
+@app.get("/forms/{form_id}")
+async def get_form(form_id: int):
+    form = next((form for form in forms_db if form["id"] == form_id), None)
+
+    if form is None:
+        raise HTTPException(status_code=404, detail="Form not found")
+
+    return form
+
+
+@app.get("/forms")
+async def get_all_forms():
+    return forms_db
+
+
 @app.post("/login")
-def login( request_data: dict,):
-    username = request_data.get("username")
-    password = request_data.get("password")
-    verifi = logar(username, password)
-    print(verifi)
-    if(verifi):
-        return {"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeKVk-Jt_nY25-f81rL2794"}
-        
-    else: 
-        raise HTTPException(
-            status_code=422,
-            detail="Usuario ou senha invalida.",
-        )
-    
-    
-@app.post("/form")
-def form( request_data: dict,):
-    name = request_data.get("name")
-    email = request_data.get("email")
-    details = request_data.get("details")
-    data = {"name": name, "email": email, "details": details}
-    utils.add("data/cliente.json", data)
+async def login(username, password):
+    # Check if the user exists in the database
+    user_in_db = next((user for user in users_db if user["username"] == username), None)
+    if user_in_db is None:
+        raise HTTPException(status_code=401, detail="Usuário não encontrado")
 
-@app.get("/form")
-def form():
-    return utils.ler("data/cliente.json")
+    # Verify the password
+    if user_in_db["password"] != password:
+        raise HTTPException(status_code=401, detail="Senha incorreta")
 
+    # User is authenticated successfully
+    return {"message": "Login bem-sucedido"}
+
+
+# Root route
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
-
-
-
-def logar(username, password):
-    usuarios = utils.ler("data/usuario.json")
-    print(usuarios)
-    usuario = list(map(lambda x: x['user'] == username and x['password'], usuarios))[0]
-    print(usuario)
-    return usuario
-    

@@ -314,8 +314,15 @@
   }
 }
 
-.input_details{
-  min-height: 80px;
+.form textarea{
+  background-color:#292a31;
+  padding: 15px 15px;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  width: 100%;
+  min-height: 200px;
 }
 
 .form label{

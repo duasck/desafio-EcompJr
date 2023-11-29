@@ -1,0 +1,335 @@
+.btn-home-mobile {
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+.btn-options-mobile {
+  align-items: center;
+  background-color: #292a31;
+  border: 1px solid;
+  border-color: #dbe9f5;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0px 5px;
+  position: relative;
+  width: 40px;
+  margin-right: 20px;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+.btn-options-mobile .line {
+  height: 2px;
+  position: relative;
+  width: 25px;
+}
+
+.header {
+  align-items: center;
+  background-color: #292a31;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  padding: 10px 0px;
+  width: 100%;
+  max-width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 98;
+}
+
+.image {
+  margin-top: 92px;
+  margin-bottom: 30px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.image .logo-ecomp {
+  position: relative;
+  width: 70%;
+}
+
+.componente {
+  align-items: flex-start;
+  background-color: #292a31;
+  border-radius: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 20px;
+  position: relative;
+  margin: 0 10% 30px 10%;
+}
+
+.componente h2 {
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.componente .paragrafo {
+  margin: 0;
+  font-weight: normal;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+}
+
+.grupo {
+  align-items: center;
+  background-color: #292a31;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+  margin: 0 10% 30px 10%;
+}
+
+.sessao {
+  align-items: flex-start;
+  border: 2px solid;
+  border-color: #dbe9f5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 5px;
+  height: 115px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+.sessao h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+}
+
+.sessao p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+}
+
+.sessao .texto-e-icon {
+  align-items: center;
+  display: inline-flex;
+  flex: auto;
+  gap: 10px;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.sessao svg {
+  height: 48px;
+  width: 48px;
+  margin: 0;
+}
+
+.footer {
+  align-items: center;
+  background-color: #292a31;
+  display: flex;
+  gap: 262px;
+  justify-content: space-around;
+  padding: 10px 0;
+  position: relative;
+  width: 100%;
+}
+
+.footer .desafio-seletivo {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: fit-content;
+}
+
+.sideMenu {
+  background-color: #dbe9f5;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  transition: ease-in;
+}
+
+.sideMenu .voltar {
+  height: 33px;
+  width: 20px;
+  left: 10%;
+  position: absolute;
+  top: 5%;
+}
+
+.sideMenu .nav {
+  margin: 0 10%;
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 30px;
+  left: 80px;
+  position: absolute;
+  top: 90px;
+  list-style-type: none;
+}
+
+.btnMaior {
+  align-items: center;
+  background-color: #292a31;
+  border: 1px solid;
+  border-color: #dae9f5;
+  border-radius: 10px;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+  width: 200px;
+  color: #dbe9f5;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
+
+#btn-menu {
+  background-color: red;
+}
+
+@media screen and (min-width: 1010px) {
+  .grupo {
+    flex-direction: row;
+    gap: 20px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 10% 30px 10%;
+    border-radius: 30px;
+    justify-content: space-between;
+    padding: 3% 7%;
+  }
+}
+
+.form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  gap: 32px;
+}
+
+.form input{
+  background-color: #292a31;
+  border-radius: 8px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+  padding: 16px;
+}
+
+.form button{
+  background-color: #292a31;
+  border-radius: 8px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  padding: 10px 30px;
+  &:hover{
+    scale: 1.1;
+    cursor: pointer;
+  }
+}
+
+.form textarea{
+  background-color:#292a31;
+  padding: 15px 15px;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  width: 100%;
+  min-height: 200px;
+}
+
+.form label{
+  background-color:#292a31;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: 3px solid;
+  padding: 15px 75px;
+  border-radius: 10px;
+}
